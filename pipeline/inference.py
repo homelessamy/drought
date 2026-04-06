@@ -1,14 +1,16 @@
 """
 Chained Stage 1 -> Stage 2 forward pass inference.
 """
+import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import torch
 import xarray as xr
 import numpy as np
 
-from drought_gnn.models.weather_model import WeatherForecastModel
-from drought_gnn.models.drought_model import DroughtClassifier
-from drought_gnn.data.qual import DataQual
+from models.weather_model import WeatherForecastModel
+from models.drought_model import DroughtClassifier
+from data.qual import DataQual
 
 __all__ = ["DroughtForecastPipeline"]
 
@@ -68,7 +70,7 @@ class DroughtForecastPipeline:
         w_model.to(device)
         d_model.to(device)
         
-        from drought_gnn.data.graph_builder import build_grid_graph
+        from data.graph_builder import build_grid_graph
         graph_cfg = config.get("graph", {})
         
         # Calculate size assuming strictly uniform steps natively

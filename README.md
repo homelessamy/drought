@@ -59,13 +59,13 @@ Run `pip install -r requirements.txt`. Ensure to install the correct PyG CUDA wh
 ## Training
 Scripts natively execute pipelines securely bounds mapping arrays boundaries mapping securely safely:
 ```bash
-python drought_gnn/training/train_weather.py
-python drought_gnn/training/train_drought.py
+python training/train_weather.py
+python training/train_drought.py
 ```
 
 ## Inference
 ```python
-from drought_gnn.pipeline.inference import DroughtForecastPipeline
+from pipeline.inference import DroughtForecastPipeline
 pipe = DroughtForecastPipeline.from_checkpoints(config)
 preds = pipe.forecast(x_history)
 ```
@@ -81,8 +81,8 @@ The `DataQual` class monitors dataset boundary metrics directly:
 
 ## Evaluation
 ```python
-from drought_gnn.evaluation.metrics import evaluate_regression, evaluate_classification
-from drought_gnn.evaluation.visualise import plot_drought_map, plot_scatter
+from evaluation.metrics import evaluate_regression, evaluate_classification
+from evaluation.visualise import plot_drought_map, plot_scatter
 
 r_metrics = evaluate_regression(weather_preds, targets)
 c_metrics = evaluate_classification(drought_preds, class_targets)

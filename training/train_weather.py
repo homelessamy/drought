@@ -1,7 +1,9 @@
 """
 Training code for the weather model.
 """
+import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import yaml
 import torch
 import numpy as np
@@ -13,7 +15,7 @@ from sklearn.metrics import mean_squared_error
 from torch_geometric.data import Data
 from torch_geometric.loader import NeighborLoader
 
-from drought_gnn.models.weather_model import WeatherForecastModel
+from models.weather_model import WeatherForecastModel
 
 __all__ = ["train_weather"]
 

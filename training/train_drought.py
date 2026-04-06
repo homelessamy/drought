@@ -1,7 +1,9 @@
 """
 Training code for the drought classification model.
 """
+import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import yaml
 import torch
 import numpy as np
@@ -13,8 +15,8 @@ from sklearn.metrics import accuracy_score, f1_score
 from torch_geometric.data import Data
 from torch_geometric.loader import NeighborLoader
 
-from drought_gnn.models.drought_model import DroughtClassifier
-from drought_gnn.training.losses import weighted_cross_entropy
+from models.drought_model import DroughtClassifier
+from training.losses import weighted_cross_entropy
 
 __all__ = ["train_drought"]
 
