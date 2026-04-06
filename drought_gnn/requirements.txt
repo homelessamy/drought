@@ -1,0 +1,12 @@
+torch>=2.2.0
+torch-geometric>=2.5.0
+xarray
+netCDF4
+scipy
+scikit-learn>=1.4
+fastapi  # optional: for API support
+uvicorn  # optional: for API support
+pyyaml
+numpy
+matplotlib
+cartopy

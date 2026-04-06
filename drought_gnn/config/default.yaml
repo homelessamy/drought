@@ -1,0 +1,41 @@
+data:
+  raw_path: "data/raw"
+  processed_path: "data/processed"
+  variables:
+    - t2m
+    - tp
+    - swvl1
+    - slhf
+    - sshf
+    - ssrd
+    - strd
+    - u10
+  T: 6
+  C: 5
+  lat_range: [-90, 90]
+  lon_range: [-180, 180]
+  grid_step: 1.0
+
+graph:
+  connectivity: "4-neighbor"   # or 8-neighbor
+  periodic_longitude: true
+
+model:
+  gru_hidden: 64
+  sage_hidden: 128
+  sage_layers: 2
+  dropout: 0.2
+  weight_norm_clip: 1.0
+
+training:
+  lr: 1e-3
+  weight_decay: 1e-4
+  batch_nodes: 4096           # node-level mini-batching
+  epochs_weather: 50
+  epochs_drought: 30
+  patience: 7
+
+qual:
+  nan_threshold: 0.05         # max fraction of NaNs tolerated
+  z_score_outlier: 5.0
+  min_class_fraction: 0.01
